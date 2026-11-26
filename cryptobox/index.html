@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CryptoBox · brique 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Cormorant+Garamond:ital,wght@1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header><h1>CryptoBox</h1><span class="tag">brique 1 · trois couches</span></header>
+
+<main class="card">
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="caesar">César</button>
+    <button role="tab" aria-selected="false" data-t="subst">Substitution</button>
+    <button role="tab" aria-selected="false" data-t="trans">Transposition</button>
+  </div>
+
+  <label for="msg">Message</label>
+  <textarea id="msg" spellcheck="false" placeholder="BONJOUR"></textarea>
+  <p class="hint">Le texte est nettoyé automatiquement : majuscules A à Z, sans espaces ni accents.</p>
+
+  <div id="p-caesar">
+    <label for="k">Clé k (0 à 25)</label><input id="k" type="number" min="0" max="25" value="3">
+  </div>
+  <div id="p-subst" hidden>
+    <label for="sk">Clé : 26 lettres distinctes</label><input id="sk" value="QWERTYUIOPASDFGHJKLZXCVBNM" maxlength="40">
+  </div>
+  <div id="p-trans" hidden>
+    <label for="tk">Mot-clé</label><input id="tk" value="PORTE">
+  </div>
+
+  <div class="row">
+    <button class="act enc" id="enc">Chiffrer</button>
+    <button class="act dec" id="dec">Déchiffrer</button>
+    <button class="act alt" id="brute">Force brute (25 clés)</button>
+  </div>
+
+  <div class="out" aria-live="polite"><b>Résultat</b><div id="res" class="res">—</div><button class="copy" id="copy" hidden>Copier</button></div>
+  <div class="brute" id="bt" hidden><table id="btb"></table></div>
+</main>
+
+<section class="tests" aria-label="Tests intégrés"><b>Tests de l’énoncé</b><div id="tl"></div></section>
+</div>
+
+<script src="crypto.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
